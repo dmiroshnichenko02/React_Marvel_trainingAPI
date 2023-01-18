@@ -1,7 +1,7 @@
 import { Component } from 'react';
 
 import './charInfo.scss';
-import ErrorMessage from '../errorMessage/Error.Message';
+import ErrorMessage from '../errorMessage/ErrorMessage';
 import Spinner from '../spinner/Spinner';
 import Skeleton from '../skeleton/Skeleton';
 import MarvelService from '../../services/MarvelServices';
@@ -26,6 +26,8 @@ class CharInfo extends Component {
             this.updateChar();
         }
     }
+
+    
 
     updateChar = () => {
         const { charId } = this.props

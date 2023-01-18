@@ -6,7 +6,7 @@ import mjolnir from '../../resources/img/mjolnir.png';
 
 import Spinner from '../spinner/Spinner';
 import MarvelService from '../../services/MarvelServices';
-import ErrorMessage from '../errorMessage/Error.Message';
+import ErrorMessage from '../errorMessage/ErrorMessage';
 
 class RandomChar extends Component {
 
@@ -32,6 +32,9 @@ class RandomChar extends Component {
     onCharLoaded = (char) => {
         this.setState({ char, loading: false })
     }
+    onError = () => {
+        this.setState({loading: false , error: true})
+    }
 
     updateChar = () => {
         const id = Math.floor(Math.random() * (1011400 - 1011000) + 1011000)
@@ -42,9 +45,7 @@ class RandomChar extends Component {
             .catch(this.onError)
     }
 
-    onError = () => {
-        this.setState({loading: false , error: true})
-    }
+    
 
     render() {
 
