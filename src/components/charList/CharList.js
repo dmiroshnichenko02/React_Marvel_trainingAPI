@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import PropTypes from 'prop-types'
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
@@ -108,12 +108,17 @@ const CharList = (props) => {
     // const errorMessage = error ? <ErrorMessage /> : null;
     // const spinner = loading && !newItemLoading ? <Spinner /> : null;
 
+
+    const elements = useMemo(() => {
+        return setContent(process, () => renderItem(data), newItemLoading)
+    }, [process]);
+
     return (
         <div className='char__list'>
             {/* {errorMessage}
             {spinner}
             {items} */}
-            {setContent(process, ()=> renderItem(data), newItemLoading)}
+            {elements}
             <button className="button button__main button__long"
                 disabled={newItemLoading}
                 style={{ 'display': charEnded ? 'none' : 'block' }}
